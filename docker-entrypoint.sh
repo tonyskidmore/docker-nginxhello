@@ -33,6 +33,11 @@ if [ ! -z ${NODE_NAME+x} ]; then
     sed -i '/<h2>Version/ i <h2>Node Name: '"$NODE_NAME"'<\/h2>' ./index.html
 fi
 
+# Add 'tag_version' to static HTML page if TAG_VERSION has been set
+if [ -n "$TAG_VERSION" ]; then
+    sed -i 's/tag_version/'"$TAG_VERSION"'/' ./index.html
+fi
+
 # Create a temporary file for holding the entire image tag, which may cotain a
 # base64 encoded image embedded in the src attribute
 tmpfile=$(mktemp -p .)

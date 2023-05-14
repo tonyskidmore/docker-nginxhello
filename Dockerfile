@@ -15,6 +15,9 @@ FROM build-tools AS retrieve
 ARG VERSION
 ENV VERSION ${VERSION:-1.16.1}
 
+ARG TAG_VERSION
+ENV TAG_VERSION ${TAG_VERSION:-v1.20.2}
+
 # Retrieve and verify Nginx source
 RUN wget -q http://nginx.org/download/nginx-${VERSION}.tar.gz     && \
     wget -q http://nginx.org/download/nginx-${VERSION}.tar.gz.asc && \
